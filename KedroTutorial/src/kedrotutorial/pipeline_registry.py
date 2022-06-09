@@ -5,6 +5,7 @@ from kedro.pipeline import Pipeline
 
 from kedrotutorial.pipelines import data_processing as dp
 from kedrotutorial.pipelines import data_science as ds
+from kedrotutorial.pipelines import hello_world as hw
 
 
 def register_pipelines() -> Dict[str, Pipeline]:
@@ -16,9 +17,12 @@ def register_pipelines() -> Dict[str, Pipeline]:
     """
     data_processing_pipeline = dp.create_pipeline()
     data_science_pipeline = ds.create_pipeline()
+    hello_world_pipeline = hw.create_pipeline()
+
 
     return {
         "__default__": data_processing_pipeline + data_science_pipeline,
         "dp": data_processing_pipeline,
         "ds": data_science_pipeline,
+        "hw": hello_world_pipeline
     }
